@@ -1,9 +1,14 @@
 {% extends "base_generic.html" %}
+{% load static %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{% static "css/index.css" %}">{% endblock %}
+
+{% block menu %}<!-- Menu -->{% endblock %}
 
 {% block content %}
-
-<div id="backgroundFade"></div>
-
-<div id="search"><p><b>S</b>earch:</p></div>
+<div id="user">
+    <a href="{% url 'login' %}"><div id="login" class="userBtn"><img src="{% static "img/login.png" %}"><p>Login</p></div></a>
+    <a href="{% url 'register' %}"><div id="register" class="userBtn"><img src="{% static "img/register.png" %}"><p>Register</p></div></a>
+</div>
 <div id="logo"></div>
 {% endblock %}
