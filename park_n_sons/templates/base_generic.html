@@ -2,12 +2,22 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        {% block title %}<title>Park 'N' Sons</title>{% endblock %}
-        <link rel="stylesheet" href="{% static "style.css" %}">
+        {% block title %}<title>CitySearch</title>{% endblock %}
+        <link rel="stylesheet" href="{% static "css/style.css" %}">
+        {% block stylesheets %}<!-- Custom Stylesheets -->{% endblock %}
     </head>
 
     <body>
-        {% block menu %}<!-- Menu -->{% endblock %}
+        <div id="backgroundFade"></div>
+        {% block menu %}
+            <div id="menu">
+                <div id="smallLogo"></div>
+                {% spaceless %}
+                <a href="{% url 'index' %}"><div id="homeBtn" class="menuBtn">HOME</div></a>
+                <a href="{% url 'index' %}"><div id="logoutBtn" class="menuBtn">LOGOUT</div></a>
+                {% endspaceless %}
+            </div>
+        {% endblock %}
         {% block content %}<!-- Content -->{% endblock %}
     </body>
 </html>

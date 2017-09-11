@@ -1,0 +1,60 @@
+#user {
+    width: 500px;
+    height: 200px;
+    position: relative;
+    left: 50%;
+    top: 320px;
+    transform: translateX(-50%);
+    font-size: 24px;
+    padding: 0px;
+    font-variant: small-caps;
+}
+
+#login {
+    float: left;
+}
+
+#register {
+    float: right;
+}
+
+.userBtn {
+    width: 200px;
+    height: 100%;
+    background-color: #00427D;
+    box-shadow: 0px 0px 20px 20px #00427D;
+    color: white;
+
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+
+    cursor: pointer;
+}
+
+.userBtn:hover {
+    background-color: white;
+    box-shadow: 0px 0px 20px 20px white;
+    color: #00427D;
+}
+
+.userBtn p {
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+    top: 30px;
+    left: 0px;
+    text-align: center;
+    width: 100%;
+}
+
+.userBtn img {
+    width: 128px;
+    height: 128px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20px;
+}
