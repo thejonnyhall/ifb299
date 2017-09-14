@@ -26,7 +26,6 @@ SECRET_KEY = 'erzw_q2$9gh+ldj^m(4z0h)@6cs1c2^)6zh=3e!#o!c*+*%=c4'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '172.19.11.13'
 ]
 
 
@@ -51,6 +50,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
 ROOT_URLCONF = 'park_n_sons.urls'
 

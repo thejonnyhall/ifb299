@@ -24,4 +24,6 @@ urlpatterns = [
     url(r'^user/', include('user.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^search/', include('search.urls')),
+    url(r'^business/', include('business.urls')),
+    url(r'^edit/', include('edit.urls')),
 ]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

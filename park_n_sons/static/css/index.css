@@ -40,6 +40,10 @@
     color: #00427D;
 }
 
+.userBtn:hover > img {
+    filter: brightness(100%) invert(0);
+}
+
 .userBtn p {
     position: relative;
     padding: 0px;
@@ -57,4 +61,10 @@
     left: 50%;
     transform: translateX(-50%);
     top: 20px;
+    filter: brightness(0) invert(1);
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
 }
