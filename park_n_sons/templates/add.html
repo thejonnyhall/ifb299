@@ -8,8 +8,5 @@
     {% if not logged_in %}
         <p>Please Login or Register to view this page.</p>
     {% endif %}
-    {% for building in building_list %}
-        <a href="{% url 'display' forloop.counter0 %}"><div class="buildings" id="{{building}}">{{building}}</div></a>
-    {% endfor %}
 </div>
 {% endblock %}

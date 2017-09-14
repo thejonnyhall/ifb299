@@ -19,3 +19,6 @@ class Results(models.Model):
     suburb = models.CharField(max_length=20, default='NONE')
     lat_coord = models.CharField(max_length=10, default='NONE')
     long_coord = models.CharField(max_length=10, default='NONE')
+
+    def __str__(self):
+        return self.name

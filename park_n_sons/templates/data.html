@@ -1,0 +1,37 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{% static "css/edit.css" %}">{% endblock %}
+
+{% block content %}
+<div id="content">
+    {% if not logged_in %}
+        <p>Please Login or Register to view this page.</p>
+    {% endif %}
+    <h1>{{building}}</h1>
+    <a href="{% url 'edit' %}">Back to List</a>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Suburb</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+        </tr>
+        {% for entry in entry_list %}
+            <tr onclick="window.document.location='{% url "modify" build_id entry.id %}';">
+                <td>{{entry.id}}</td>
+                <td>{{entry}}</td>
+                <td>{{entry.address}}</td>
+                <td>{{entry.suburb}}</td>
+                <td>{{entry.lat_coord}}</td>
+                <td>{{entry.long_coord}}</td>
+            </tr>
+        {% empty %}
+            <tr><td colspan="6">No Entries</td></tr>
+        {% endfor %}
+    </table>
+    <a id="addEntryBtn" href="{% url 'add' build_id %}">Add {{building}}</a>
+</div>
+{% endblock %}
