@@ -20,13 +20,14 @@
             <th>Longitude</th>
         </tr>
         {% for entry in entry_list %}
-            <tr onclick="window.document.location='{% url "modify" build_id entry.id %}';">
+            <tr>
                 <td>{{entry.id}}</td>
                 <td>{{entry}}</td>
                 <td>{{entry.address}}</td>
                 <td>{{entry.suburb}}</td>
                 <td>{{entry.lat_coord}}</td>
                 <td>{{entry.long_coord}}</td>
+                <td><a href="{% url 'modify' build_id entry.id %}">Edit</a> <a>Delete</a></td>
             </tr>
         {% empty %}
             <tr><td colspan="6">No Entries</td></tr>

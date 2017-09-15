@@ -7,6 +7,18 @@
 <div id="content">
     {% if not logged_in %}
         <p>Please Login or Register to view this page.</p>
+    {% elif not business_owner %}
+        <p>You do not have permission to view this page</p>
+    {% else %}
+        <a href="{% url 'display' build_id %}">Back to {{building}} List</a>
+        <form method="POST">
+            <p>Name:<input type="text"></p>
+            <p>Address:<input type="text"></p>
+            <p>Suburb:<input type="text"></p>
+            <p>Latitude:<input type="number"></p>
+            <p>Longitude:<input type="number"></p>
+            <br><input type="submit">
+        </form>
     {% endif %}
 </div>
 {% endblock %}
