@@ -11,7 +11,7 @@
         <div id="backgroundFade"></div>
         {% block menu %}
             <div id="menu">
-                <div id="smallLogo"></div>
+                <a href="{% url 'index' %}"><img id="smallLogo" src="{% static 'img/logo.png' %}"></a>
                 {% spaceless %}
                 <a href="{% url 'index' %}"><div id="homeBtn" class="menuBtn">HOME</div></a>
                 <a href="{% url 'index' %}"><div id="logoutBtn" class="menuBtn">LOGOUT</div></a>
