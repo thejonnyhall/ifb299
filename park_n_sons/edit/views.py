@@ -92,3 +92,7 @@ def modify(request, building, id):
     }
 
     return render(request, "modify.html", c)
+
+def delete(request, building, id):
+    Results.objects.get(id=id).delete()
+    return HttpResponseRedirect("/edit/"+building)

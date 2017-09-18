@@ -4,13 +4,13 @@
 {% block stylesheets %}<link rel="stylesheet" href="{% static "css/edit.css" %}">{% endblock %}
 
 {% block content %}
-<div id="content">
+<div id="display">
     {% if not logged_in %}
         <p>Please Login or Register to view this page.</p>
     {% elif not business_owner %}
         <p>You do not have permission to view this page</p>
     {% else %}
-        <a href="{% url 'display' build_id %}">Back to {{building}} List</a>
+        <a href="{% url 'display' build_id %}" class="btn" id="backBtn">Back to {{building}} List</a>
         <form action="{% url 'modify' build_id entry.id %}" method="POST">
             {% csrf_token %}
             {% for field in form %}

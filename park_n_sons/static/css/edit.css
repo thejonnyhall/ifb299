@@ -13,4 +13,141 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+
+    cursor: pointer;
+}
+
+.buildings:hover {
+    background-color: #00427D;
+    color: white;
+}
+
+h1 {
+    margin: 0px;
+    position: relative;
+    top: 20px;
+    left: 5%;
+    font-variant: small-caps;
+    font-size: 48px;
+    font-weight: normal;
+}
+
+#display {
+    width: 80%;
+    height: 90%;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);   
+    background-color: #00427D;
+}
+
+#dataTable {
+    width: 90%;
+    background-color: white;
+    box-shadow: 0px 0px 5px 5px white;
+    color: #00427D;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-collapse: collapse;
+}
+
+#idCol {
+    width: 20px;
+}
+
+.nameCol {
+    width: 20%;
+    text-align: left!important;
+    padding-left: 5px;
+}
+
+#dataTable td{
+    text-align: center;
+    border: 2px solid #00427D;
+    line-height: 25px;
+}
+
+.btn {
+    display: block;
+    width: 150px;
+    height: 35px;
+    background-color: white;
+    box-shadow: 0px 0px 5px 5px white;
+    border-radius: 10px;
+    line-height: 35px;
+    text-align: center;
+    font-weight: bold;
+    color: #00427D;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    left: calc(95% - 150px);
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+
+    cursor: pointer;
+}
+
+#backBtn {
+    width: 200px;
+    position: absolute;
+    left: calc(100% - 200px - 20px);
+}
+
+form {
+    padding: 20px;
+}
+
+.fieldWrapper label {
+    display: inline-block;
+    width: 100px;
+}
+
+.fieldWrapper {
+    height: 30px;
+    line-height: 30px;
+}
+
+.fieldWrapper input {
+    width: 300px;
+}
+
+.btn:hover{
+    background-color: #00427D;
+    color: white;
+}
+
+.editDelBtn {
+    color: #00427D;
+    font-variant: small-caps;
+    display: inline-block;
+    width: 45%;
+    min-width: 50px;
+    text-align: center;
+    border: 1px solid #00427D;
+    height: 20px;
+    line-height: 20px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+
+    cursor: pointer;
+}
+
+.editDelBtn:hover {
+    background-color: #00427D;
+    color: white;
 }

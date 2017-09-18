@@ -4,35 +4,36 @@
 {% block stylesheets %}<link rel="stylesheet" href="{% static "css/edit.css" %}">{% endblock %}
 
 {% block content %}
-<div id="content">
+<div id="display">
     {% if not logged_in %}
         <p>Please Login or Register to view this page.</p>
     {% endif %}
     <h1>{{building}}</h1>
-    <a href="{% url 'edit' %}">Back to List</a>
-    <table>
+    <a class="btn" href="{% url 'edit' %}">Back to List</a>
+    <table id="dataTable">
         <tr>
-            <th>ID</th>
+            <th id="idCol">ID</th>
             <th>Name</th>
             <th>Address</th>
             <th>Suburb</th>
             <th>Latitude</th>
             <th>Longitude</th>
+            <th></th>
         </tr>
         {% for entry in entry_list %}
             <tr>
                 <td>{{entry.id}}</td>
-                <td>{{entry}}</td>
-                <td>{{entry.address}}</td>
-                <td>{{entry.suburb}}</td>
+                <td class="nameCol">{{entry}}</td>
+                <td class="nameCol">{{entry.address}}</td>
+                <td class="nameCol">{{entry.suburb}}</td>
                 <td>{{entry.lat_coord}}</td>
                 <td>{{entry.long_coord}}</td>
-                <td><a href="{% url 'modify' build_id entry.id %}">Edit</a> <a>Delete</a></td>
+                <td><a class="editDelBtn" href="{% url 'modify' build_id entry.id %}">Edit</a> <a href="{% url 'delete' build_id entry.id %}" class="editDelBtn">Delete</a></td>
             </tr>
         {% empty %}
             <tr><td colspan="6">No Entries</td></tr>
         {% endfor %}
     </table>
-    <a id="addEntryBtn" href="{% url 'add' build_id %}">Add {{building}}</a>
+    <a class="btn" href="{% url 'add' build_id %}">Add {{building}}</a>
 </div>
 {% endblock %}
