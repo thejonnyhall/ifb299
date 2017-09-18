@@ -17,8 +17,8 @@ class Results(models.Model):
     type_business = models.IntegerField(default='NONE', choices=BUILDING)
     address = models.CharField(max_length=50, default='NONE')
     suburb = models.CharField(max_length=20, default='NONE')
-    lat_coord = models.CharField(max_length=10, default='NONE')
-    long_coord = models.CharField(max_length=10, default='NONE')
+    lat_coord = models.FloatField(max_length=10, default='NONE')
+    long_coord = models.FloatField(max_length=10, default='NONE')
 
     def __str__(self):
         return self.name

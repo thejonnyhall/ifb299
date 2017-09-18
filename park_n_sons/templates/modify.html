@@ -11,12 +11,14 @@
         <p>You do not have permission to view this page</p>
     {% else %}
         <a href="{% url 'display' build_id %}">Back to {{building}} List</a>
-        <form method="POST">
-            <p>Name:<input type="text" value="{{entry.name}}"></p>
-            <p>Address:<input type="text" value="{{entry.address}}"></p>
-            <p>Suburb:<input type="text" value="{{entry.suburb}}"></p>
-            <p>Latitude:<input type="number" value="{{entry.lat_coord}}"></p>
-            <p>Longitude:<input type="number" value="{{entry.long_coord}}"></p>
+        <form action="{% url 'modify' build_id entry.id %}" method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="fieldWrapper">
+                    {{ field.errors }}
+                    {{ field.label_tag }} {{ field }}
+                </div>
+            {% endfor %}
             <br><input type="submit">
         </form>
     {% endif %}

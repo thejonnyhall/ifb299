@@ -31,14 +31,11 @@ a {
     z-index: 0;
 }
 
-#logo {
-    width: 400px;
-    height: 200px;
-    background-color: #00427D;
-    position: absolute;
-    left: 50%;
+#content {
+    width: 100%;
     top: 50px;
-    transform: translateX(-50%);
+    position: absolute;
+    color: white;
 }
 
 #menu {

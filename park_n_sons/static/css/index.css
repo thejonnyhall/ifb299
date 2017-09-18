@@ -1,9 +1,19 @@
+#logo {
+    width: 400px;
+    height: 200px;
+    background-color: #00427D;
+    position: absolute;
+    left: 50%;
+    top: 0px;
+    transform: translateX(-50%);
+}
+
 #user {
     width: 500px;
     height: 200px;
     position: relative;
     left: 50%;
-    top: 320px;
+    top: 270px;
     transform: translateX(-50%);
     font-size: 24px;
     padding: 0px;
