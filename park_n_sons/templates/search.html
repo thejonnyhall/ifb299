@@ -1,9 +1,22 @@
 {% extends "base_generic.html" %}
+{% load static %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{% static "css/search.css" %}">{% endblock %}
 
 {% block menu %}<!-- Menu -->{% endblock %}
 
 {% block content %}
-<div id="login">
+<a href="{% url 'index' %}"><img id="logo" src="{% static 'img/logo.png' %}"></a>
+<div id="search">
+    <form action="{% url 'result' %}" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="fieldWrapper">
+                {{ field.errors }}
+                {{ field.label_tag }} {{ field }}
+            </div>
+        {% endfor %}
+        <br><input type="submit" value="Search" id="searchBtn">
+    </form>
 </div>
-<a href="{% url 'index' %}"><div id="logo"></div></a>
 {% endblock %}

@@ -1,0 +1,38 @@
+#logo {
+    width: 350px;
+    position: absolute;
+    left: 50%;
+    top: 0px;
+    transform: translateX(-50%);
+}
+
+#search {
+    width: 400px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border: 3px solid black;
+    border-radius: 20px;
+    background-color: rgba(0, 66, 125, 0.7);
+}
+
+.fieldWrapper {
+    width: 300px;
+    text-align: right;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 10px;
+}
+
+#id_keywords {
+    width: 100%;
+}
+
+#searchBtn {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
+}
