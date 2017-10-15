@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{% static "css/result.css" %}">{% endblock %}
+
+{% block content %}
+    {% for result in results %}
+        <div class="item">
+            <p class="name">{{result.name}}</p>
+            {% load index %}
+            <p class="type">{{ business|index:result.type_business }}</p>
+            <p class="address">{{result.address}}, {{result.suburb}}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
