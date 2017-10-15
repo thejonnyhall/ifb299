@@ -15,12 +15,22 @@
                 <a href="{% url 'index' %}"><img id="smallLogo" src="{% static 'img/logo.png' %}"></a>
                 {% spaceless %}
                 <a href="{% url 'index' %}"><div id="homeBtn" class="menuBtn">HOME</div></a>
-                <a href="{% url 'index' %}"><div id="logoutBtn" class="menuBtn">LOGOUT</div></a>
                 {% endspaceless %}
+                {% if user.username %}
+                <a href="{% url 'index' %}"><div id="logoutBtn" class="menuBtn">LOGOUT</div></a>
+                <p>Welcome {{ user.username }}!
+                Here you can show your content!</p><br/>
+                {% else %}
+                <p>Welcome anonymous user!
+                You need to <a href="registration/login/">login</a></p>
+                {% endif %}
+
+
             </div>
         {% endblock %}
         <div id="content">
-            {% block content %}{% endblock %}
+            {% block content %}
+            {% endblock %}
         </div>
     </body>
 </html>
