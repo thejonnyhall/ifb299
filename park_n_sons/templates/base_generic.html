@@ -17,7 +17,7 @@
                 <a href="{% url 'index' %}"><div id="homeBtn" class="menuBtn">HOME</div></a>
                 {% endspaceless %}
                 {% if user.username %}
-                <a href="{% url 'index' %}"><div id="logoutBtn" class="menuBtn">LOGOUT</div></a>
+                <a href="{% url 'logout' %}"><div id="logoutBtn" class="menuBtn">LOGOUT</div></a>
                 <p>Welcome {{ user.username }}!
                 Here you can show your content!</p><br/>
                 {% else %}
