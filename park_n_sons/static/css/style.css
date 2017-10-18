@@ -37,7 +37,7 @@ a {
     top: 83px;
     height: calc(100% - 83px);
     position: absolute;
-    color: white;
+    color: black;
 }
 
 #menu {
