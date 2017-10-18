@@ -4,6 +4,7 @@
 {% block stylesheets %}<link rel="stylesheet" href="{% static "css/result.css" %}">{% endblock %}
 
 {% block content %}
+<div id="search"></div>
     {% for result in results %}
         <div class="item">
             <p class="name">{{result.name}}</p>
@@ -11,5 +12,7 @@
             <p class="type">{{ business|index:result.type_business }}</p>
             <p class="address">{{result.address}}, {{result.suburb}}</p>
         </div>
+    {% empty %}
+        <p id="error">No Results</p>
     {% endfor %}
 {% endblock %}

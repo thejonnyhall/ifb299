@@ -1,17 +1,16 @@
 .item {
     width: 500px;
-    background-color: rgba(0, 66, 125, 0.7);
+    background-color: rgba(255, 255, 255, 0.9);
     border: 3px solid black;
     border-radius: 10px;
     padding: 10px;
     margin-top: 20px;
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 25%;
 }
 
 .item p {
-    background-color: rgba(0, 66, 125, 0.5);
+    color: black;
     width: 80%;
     margin: 0px;
     padding: 5px;
@@ -25,4 +24,40 @@
     font-size: 12px;
     margin-top: 0px!important;
     padding-top: 0px!important;
+}
+
+.name {
+    font-weight: bold;
+}
+
+#content {
+    overflow: auto;
+}
+
+#search {
+    width: 20%;
+    height: 400px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: black;
+    border: 3px solid black;
+    border-radius: 10px;
+    left: 20px;
+    top: 20px;
+    position: absolute;
+}
+
+#error {
+    font-size: 24px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: black;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 100px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translateX(-50%);
+    font-variant: small-caps;
 }

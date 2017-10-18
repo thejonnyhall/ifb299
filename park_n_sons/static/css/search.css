@@ -14,7 +14,8 @@
     transform: translateX(-50%) translateY(-50%);
     border: 3px solid black;
     border-radius: 20px;
-    background-color: rgba(0, 66, 125, 0.7);
+    background-color: rgba(0, 66, 125, 0.8);
+    color: white;
 }
 
 .fieldWrapper {
@@ -35,4 +36,10 @@
     left: 50%;
     transform: translateX(-50%);
     margin-bottom: 10px;
+}
+
+#logoutBtn {
+    position: absolute;
+    right: 30px;
+    top: 30px;
 }

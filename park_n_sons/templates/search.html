@@ -3,7 +3,7 @@
 
 {% block stylesheets %}<link rel="stylesheet" href="{% static "css/search.css" %}">{% endblock %}
 
-{% block menu %}<!-- Menu -->{% endblock %}
+{% block menu %}<a href="{% url 'logout' %}"><div id="logoutBtn" class="menuBtn">LOGOUT</div></a>{% endblock %}
 
 {% block content %}
 <a href="{% url 'index' %}"><img id="logo" src="{% static 'img/logo.png' %}"></a>
