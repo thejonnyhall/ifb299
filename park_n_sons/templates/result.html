@@ -4,7 +4,19 @@
 {% block stylesheets %}<link rel="stylesheet" href="{% static "css/result.css" %}">{% endblock %}
 
 {% block content %}
-<div id="search"></div>
+    <div id="search">
+        <form action="{% url 'result' %}" method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="fieldWrapper">
+                    {{ field.errors }}
+                    {{ field.label_tag }} {{ field }}
+                </div>
+            {% endfor %}
+            <br><input type="submit" value="Search" id="searchBtn">
+        </form>
+    </div>
+    <span id="resultsList">
     {% for result in results %}
         <div class="item">
             <p class="name">{{result.name}}</p>
@@ -15,6 +27,7 @@
     {% empty %}
         <p id="error">No Results</p>
     {% endfor %}
+    </span>
 
     {% if results %}
         <div id="page">

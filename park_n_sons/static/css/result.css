@@ -38,13 +38,33 @@
 #search {
     width: 20%;
     height: 400px;
-    background-color: rgba(255, 255, 255, 0.9);
-    color: black;
+    background-color: rgba(0, 66, 125, 0.9);
+    color: white;
     border: 3px solid black;
     border-radius: 10px;
     left: 10px;
     top: 90px;
     position: fixed;
+}
+
+.fieldWrapper {
+    width: 280px;
+    text-align: right;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 10px;
+}
+
+#id_keywords {
+    width: 100%;
+}
+
+#searchBtn {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
 }
 
 #error {
