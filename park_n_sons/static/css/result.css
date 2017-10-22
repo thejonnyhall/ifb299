@@ -1,7 +1,7 @@
 .item {
     width: 500px;
     background-color: rgba(255, 255, 255, 0.9);
-    border: 3px solid black;
+    border: 1px solid black;
     border-radius: 10px;
     padding: 10px;
     margin-top: 10px;
@@ -19,6 +19,19 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.itemColour {
+    width: 5px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid black;
+    border-right: none;
 }
 
 .type {
@@ -136,4 +149,13 @@
 
 #next {
     right: 5px;
+}
+
+#map {
+    position: fixed!important;
+    top: 90px;
+    right: 20px;
+    width: 500px;
+    height: 500px;
+    border: 3px solid black;
 }

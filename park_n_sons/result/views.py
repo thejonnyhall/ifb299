@@ -9,6 +9,8 @@ from .models import Results
 from django.core.cache import cache
 
 def result(request):
+    buildingList = ["College", "Library", "Industry", "Hotel", "Park", "Zoo", "Museum", "Restaurant", "Mall"]
+    colours = ["E6194B", "3CB44B", "FFE119", "0082C8", "F58231", "911EB4", "46F0F0", "F032E6", "800000", "AA6E28"]
     if request.method == 'POST':
         form = SearchForm(request.POST)
         if form.is_valid():
@@ -26,8 +28,6 @@ def result(request):
             search = reduce(operator.or_, (Q(name__icontains=x) for x in words))
             results = Results.objects.filter(search, type_business__in=buildingFilter)
 
-            buildingList = ["College", "Library", "Industry", "Hotel", "Park", "Zoo", "Museum", "Restaurant", "Mall"]
-
             paginator = Paginator(results, 10)
             page = request.GET.get('page')
             try:
@@ -40,11 +40,9 @@ def result(request):
             searchForm = SearchForm()
             cache.set('results', results)
 
-            return render(request, "result.html", {'results': result_list, 'business': buildingList, 'form': searchForm})
+            return render(request, "result.html", {'results': result_list, 'business': buildingList, 'form': searchForm, 'colours': colours})
     elif request.method == 'GET' and cache.get('results'):
         results = cache.get('results')
-
-        buildingList = ["College", "Library", "Industry", "Hotel", "Park", "Zoo", "Museum", "Restaurant", "Mall"]
 
         paginator = Paginator(results, 10)
         page = request.GET.get('page')
@@ -56,6 +54,6 @@ def result(request):
             result_list = paginator.page(paginator.num_pages)
         
         searchForm = SearchForm()
-        return render(request, "result.html", {'results': result_list, 'business': buildingList, 'form': searchForm})
+        return render(request, "result.html", {'results': result_list, 'business': buildingList, 'form': searchForm, 'colours': colours})
         
     return HttpResponseRedirect('/search/')

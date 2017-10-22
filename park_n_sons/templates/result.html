@@ -17,19 +17,32 @@
         </form>
     </div>
     <span id="resultsList">
+    {% if results %}
+        <script>
+            var markers = [];
+        </script>
+    {% endif %}
     {% for result in results %}
         <div class="item">
             <p class="name">{{result.name}}</p>
             {% load index %}
             <p class="type">{{ business|index:result.type_business }}</p>
             <p class="address">{{result.address}}, {{result.suburb}}</p>
+            <div class="itemColour" style="background-color: #{{colours|index:forloop.counter0}};"></div>
         </div>
+        <script>
+            var latitude = {{result.lat_coord}};
+            var longitude = {{result.long_coord}};
+            markers.push({lat: latitude, lng: longitude});
+            console.log(markers);
+        </script>
     {% empty %}
         <p id="error">No Results</p>
     {% endfor %}
     </span>
 
     {% if results %}
+        <div id="map"></div>
         <div id="page">
             {% if results.has_previous %}
                 <a class="pageBtn" id="previous" href="?page={{ results.previous_page_number }}">previous</a>
@@ -43,5 +56,28 @@
                 <a class="pageBtn" id="next" href="?page={{ results.next_page_number }}">next</a>
             {% endif %}
         </div>
+        <script>
+            var map;
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: -27.5, lng: 153},
+                    zoom: 12
+                });
+                var colours = ["E6194B", "3CB44B", "FFE119", "0082C8", "F58231", "911EB4", "46F0F0", "F032E6", "800000", "AA6E28"];
+                var bounds = new google.maps.LatLngBounds();
+                for(i = 0; i < markers.length; i++){
+                    var image = "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + colours[i];
+                    var marker = new google.maps.Marker({
+                        icon: image,
+                        position: markers[i],
+                        map: map
+                    });
+                    bounds.extend(markers[i]);
+                }
+                map.fitBounds(bounds);
+            }
+        </script>
     {% endif %}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCASnv7zUwKIXlNcYtDbGoIXvL7Dqaiap8&callback=initMap"
+    async defer></script>
 {% endblock %}
