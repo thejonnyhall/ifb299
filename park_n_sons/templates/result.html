@@ -30,6 +30,7 @@
     {% if results %}
         <script>
             var markers = [];
+            var urls = [];
         </script>
     {% endif %}
     {% for result in results %}
@@ -44,7 +45,7 @@
             var latitude = {{result.lat_coord}};
             var longitude = {{result.long_coord}};
             markers.push({lat: latitude, lng: longitude});
-            console.log(markers);
+            urls.push("{% url 'item' result.id %}");
         </script>
     {% empty %}
         <p id="error">No Results</p>
@@ -80,7 +81,11 @@
                     var marker = new google.maps.Marker({
                         icon: image,
                         position: markers[i],
-                        map: map
+                        map: map,
+                        url: urls[i]
+                    });
+                    google.maps.event.addListener(marker, 'click', function() {
+                        window.location.href = this.url;
                     });
                     bounds.extend(markers[i]);
                 }
