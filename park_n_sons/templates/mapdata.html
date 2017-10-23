@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <div id="map" style="width: 500px; height: 500px"></div>
+</body>
+<script>
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+    function initMap(){
+        var center = {lat: -27.469898, lng: 153.024882};
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: center,
+            zoom: 15
+          });
+        var type_list = ['cafe', 'restaurant', 'university', 'park', 'library', 'museum', 'zoo', 'shopping_mall', 'lodging'];
+        service = new google.maps.places.PlacesService(map);
+        for(i=0; i<type_list.length; i++){
+            service.nearbySearch({
+                location: center,
+                radius: 10000,
+                type: [type_list[i]]
+            }, callback);
+        }
+    }
+
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+
+    function callback(results, status, pagination) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for(i=0; i<results.length; i++){
+                var type = 0;
+                var childFriendly = true;
+                if(results[i].types.indexOf('restaurant') > -1){ type = 7; }
+                if(results[i].types.indexOf('cafe') > -1){ type = 7; }
+                if(results[i].types.indexOf('university') > -1){ type = 0; }
+                if(results[i].types.indexOf('shopping_mall') > -1){ type = 8; }
+                if(results[i].types.indexOf('library') > -1){ type = 1; }
+                if(results[i].types.indexOf('museum') > -1){ type = 6; }
+                if(results[i].types.indexOf('zoo') > -1){ type = 5; }
+                if(results[i].types.indexOf('park') > -1){ type = 4; }
+                if(results[i].types.indexOf('lodging') > -1){ type = 3; }
+                if(results[i].types.indexOf('bar') > -1){ childFriendly = false; }
+                var result_data = {
+                    name: results[i].name,
+                    address: results[i].vicinity,
+                    price: results[i].price_level,
+                    rating: results[i].rating,
+                    childFriendly: childFriendly,
+                    latitude: results[i].geometry.location.lat(),
+                    longitude: results[i].geometry.location.lng(),
+                    type: type
+                };
+                $.ajax({
+                    url: "{% url 'mapscrape' %}",
+                    method: "POST",
+                    beforeSend: function(xhr, settings) {
+                        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                        }
+                    },
+                    data: result_data, 
+                    success: function(data){
+                        //
+                    }
+                });
+            }
+        }
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCASnv7zUwKIXlNcYtDbGoIXvL7Dqaiap8&libraries=places&callback=initMap"
+async defer></script>
+</html>

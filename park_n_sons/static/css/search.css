@@ -42,4 +42,11 @@
     position: absolute;
     right: 30px;
     top: 30px;
+    box-shadow: 0px 0px 5px 3px #00427D;
+    color: #00427D;
+}
+
+#logoutBtn:hover {
+    color: white;
+    background-color: #00427D;
 }

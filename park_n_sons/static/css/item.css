@@ -1,0 +1,63 @@
+#map {
+    width: 500px;
+    height: 50%;
+    position: relative;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 3px solid black;
+}
+
+#itemContent {
+    width: 70%;
+    height: 30%;
+    position: relative;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 3px solid black;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+}
+
+h1 {
+    margin: 0px;
+}
+
+#address {
+    font-weight: bold;
+    margin: 0px;
+}
+
+#business {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 0px;
+    font-size: 24px;
+}
+
+#rating {
+    
+}
+
+#freeActivity {
+    margin: 0px;
+}
+
+#back {
+    position: absolute;
+    top: 50px;
+    left: 15%;
+    border: 3px solid black;
+    border-radius: 10px;
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 5px;
+    background-color: rgba(0, 66, 125, 0.7);
+    text-align: center;
+}

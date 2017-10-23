@@ -1,5 +1,5 @@
 .item {
-    width: 500px;
+    width: 35%;
     background-color: rgba(255, 255, 255, 0.9);
     border: 1px solid black;
     border-radius: 10px;
@@ -8,6 +8,7 @@
     margin-bottom: 10px;
     position: relative;
     left: 25%;
+    cursor: pointer;
 }
 
 .item p {
@@ -61,8 +62,20 @@
 }
 
 .fieldWrapper {
-    width: 280px;
-    text-align: right;
+    width: 90%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 10px;
+}
+
+.fieldWrapper label[for=id_free], .fieldWrapper label[for=id_childFriendly] {
+    display: inline-block;
+    width: 110px;
+}
+
+.sortFieldWrapper {
+    width: 90%;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -73,11 +86,26 @@
     width: 100%;
 }
 
+#id_userType {
+    width: 100%;
+}
+
 #searchBtn {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
     margin-bottom: 10px;
+}
+
+#id_sort {
+    width: 100%;
+}
+
+#sortBtn {
+    position: relative;
+    width: 50px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #error {
@@ -155,7 +183,7 @@
     position: fixed!important;
     top: 90px;
     right: 20px;
-    width: 500px;
+    width: 35%;
     height: 500px;
     border: 3px solid black;
 }

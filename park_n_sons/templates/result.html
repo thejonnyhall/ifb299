@@ -15,6 +15,16 @@
             {% endfor %}
             <br><input type="submit" value="Search" id="searchBtn">
         </form>
+        <form action="{% url 'result' %}" method="POST">
+            {% csrf_token %}
+            {% for field in sort %}
+                <div class="sortFieldWrapper">
+                    {{ field.errors }}
+                    {{ field.label_tag }} {{ field }}
+                </div>
+            {% endfor %}
+            <br><input type="submit" value="Sort" id="sortBtn">
+        </form>
     </div>
     <span id="resultsList">
     {% if results %}
@@ -23,7 +33,7 @@
         </script>
     {% endif %}
     {% for result in results %}
-        <div class="item">
+        <div class="item" onclick="window.location.href='{% url 'item' result.id %}';">
             <p class="name">{{result.name}}</p>
             {% load index %}
             <p class="type">{{ business|index:result.type_business }}</p>

@@ -1,0 +1,35 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{% static "css/item.css" %}">{% endblock %}
+
+{% block content %}
+    <div id="map"></div>
+    <div id="itemContent">
+        <h1>{{item.name}}</h1>
+        <p id="address">{{item.address}}, {{item.suburb}}</p>
+        {% load index %}
+        <p id="business">{{ business|index:item.type_business }}</p>
+        <p id="rating"><b>Rating:</b> {{item.rating}}/5.0</p>
+        <p id="freeActivity">{% if item.rating == 0 %}Free Activity{% else %}Paid Activity{% endif %}</p>
+    </div>
+    <a id="back" href="{% url 'result' %}?page={{page}}">Back to Results</a>
+    <script>
+        function initMap(){
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: -27.5, lng: 153},
+                zoom: 15
+            });
+            var latitude = {{item.lat_coord}};
+            var longitude = {{item.long_coord}};
+            var location = {lat: latitude, lng: longitude};
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+            map.setCenter(location);
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCASnv7zUwKIXlNcYtDbGoIXvL7Dqaiap8&callback=initMap"
+    async defer></script>
+{% endblock %}
