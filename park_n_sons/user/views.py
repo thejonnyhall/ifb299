@@ -31,6 +31,16 @@ def register(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login_auth(request, user)
+            userType = form.cleaned_data.get('UserType')
+            if userType == "bsns":
+                group = Group.objects.get(name="Businessmen")
+                user.groups.add(group)
+            elif userType == "trst":
+                group = Group.objects.get(name="Tourists")
+                user.groups.add(group)
+            elif userType == "sdnt":
+                group = Group.objects.get(name="Students")
+                user.groups.add(group)
             return redirect('index')
     else:
         form = UserCreateForm()

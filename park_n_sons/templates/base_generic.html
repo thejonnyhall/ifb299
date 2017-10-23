@@ -21,7 +21,7 @@
                 <p id="userWelcome">Welcome {{ user.username }}!</p>
                 {% else %}
                 <p id="userWelcome">Welcome anonymous user!
-                You need to <a href="registration/login/">login</a></p>
+                You need to <a href="{% url 'login' %}">login</a></p>
                 {% endif %}
 
 

@@ -20,14 +20,22 @@
 
 .fieldWrapper {
     width: 300px;
-    text-align: right;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
     margin-top: 10px;
 }
 
+.fieldWrapper label[for=id_free], .fieldWrapper label[for=id_childFriendly] {
+    display: inline-block;
+    width: 110px;
+}
+
 #id_keywords {
+    width: 100%;
+}
+
+#id_userType {
     width: 100%;
 }
 

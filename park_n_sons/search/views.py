@@ -5,6 +5,18 @@ from result.models import Result
 
 def search(request):
     form = SearchForm()
+    userType = request.user.groups.all()
+    userInitial = "bsns"
+    if userType:
+        userType = userType[0]
+        if userType.name == "Businessmen":
+            userInitial = "bsns"
+        elif userType.name == "Tourists":
+            userInitial = "trst"
+        elif userType.name == "Students":
+            userInitial = "sdnt"
+    form.fields['userType'].initial = userInitial
+
     context = {'form':form}
     return render(request, "search.html", context)
 

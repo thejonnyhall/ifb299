@@ -1,0 +1,23 @@
+#login {
+    border: 1px solid black;
+    border-radius: 20px;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 300px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8)
+}
+
+#loginBtn {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#loginTable {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
