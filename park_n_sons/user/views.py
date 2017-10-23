@@ -6,6 +6,7 @@ from django.contrib.auth import logout as logout_auth
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import redirect
 from django import forms
+from django.contrib.auth.models import User, Group
 
 
 def login(request):
@@ -23,7 +24,7 @@ def login(request):
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserCreateForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -32,10 +33,9 @@ def register(request):
             login_auth(request, user)
             return redirect('index')
     else:
-        form = UserCreationForm()
+        form = UserCreateForm()
     return render(request, 'registration/register.html', {'form': form, 'user': request.user})
 
 def logout(request):
     logout_auth(request)
     return redirect('index')
-
