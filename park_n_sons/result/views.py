@@ -8,8 +8,11 @@ from functools import reduce
 import operator
 from .models import Result
 from django.core.cache import cache
+from django.shortcuts import redirect
 
 def result(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
     buildingList = ["College", "Library", "Industry", "Hotel", "Park", "Zoo", "Museum", "Restaurant", "Mall"]
     colours = ["E6194B", "3CB44B", "FFE119", "0082C8", "F58231", "911EB4", "46F0F0", "F032E6", "800000", "AA6E28"]
     if request.method == 'POST' and request.POST.get('userType', None) is not None:
@@ -110,6 +113,8 @@ def result(request):
     return HttpResponseRedirect('/search/')
     
 def item(request, id):
+    if not request.user.is_authenticated:
+        return redirect('login')
     buildingList = ["College", "Library", "Industry", "Hotel", "Park", "Zoo", "Museum", "Restaurant", "Mall"]
     item = Result.objects.get(id=id)
     page = cache.get('page', 1)

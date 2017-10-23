@@ -11,5 +11,6 @@
         <input type="submit" value="Register" id="registerBtn" />
         {% csrf_token %}
         </form>
+        <a id="login" href="{% url 'login' %}">Or Click here to Login</a>
     </div>
 {% endblock %}

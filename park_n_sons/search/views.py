@@ -2,8 +2,11 @@ from django.shortcuts import render
 
 from .forms import SearchForm
 from result.models import Result
+from django.shortcuts import redirect
 
 def search(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
     form = SearchForm()
     userType = request.user.groups.all()
     userInitial = "bsns"
